@@ -23,7 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         rtl={false}
         pauseOnFocusLoss
         draggable
-        theme="light"
+        theme="colored"
         />
       <CssBaseline />
       <App />

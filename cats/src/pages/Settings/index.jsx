@@ -1,11 +1,13 @@
 import { Button, Stack, Typography, TextField} from "@mui/material";
 import { toast } from "react-toastify";
 import useStore from "../../Store/useStore";
+import { useState } from "react";
 
 
 
 export default function Settings(){
-    const {storageEncoded, resetGame} = useStore()
+    const {storageEncoded, resetGame, importSave} = useStore()
+    const [importText, setImportText] = useState('')
 
     const exportGame = () => {
         navigator.clipboard.writeText(storageEncoded)
@@ -21,7 +23,17 @@ export default function Settings(){
             <Button variant="outlined" onClick={exportGame}>Export save</Button>
             <TextField
                 label='Import save'
-                InputProps={{endAdornment: <Button>Save</Button>}}
+                value={importText}
+                onChange={(e) => setImportText(e.target.value)}
+                InputProps={{endAdornment: <Button onClick={() => {
+                   try{
+                    importSave(importText)
+                    toast.success('File was succesfully imported!')
+                    setImportText('') 
+                }catch(e){
+                    toast.error('Error when importing the file!')
+                }
+                }}>Save</Button>}}
             />
         </Stack> 
     )

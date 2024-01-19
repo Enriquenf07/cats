@@ -30,7 +30,10 @@ const useStore = create(
                 const newStorage = JSON.parse(atob(get().storageEncoded))
                 set(() => newStorage)
             },
-
+            importSave: save => {
+                const newStorage = JSON.parse(atob(save))
+                set(() => newStorage)
+            },
             gameLoop: () => {
                 const currentTime = Date.now();
                 if (currentTime >= get().lastUpdateTime) {
