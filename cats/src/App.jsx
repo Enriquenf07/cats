@@ -7,6 +7,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useGameLogic } from './GameLogic/useGameLogic'
 import useStore from './Store/useStore'
+import Stats from './Stats'
 
 
 
@@ -17,7 +18,10 @@ function Application() {
       <Grid item container justifyContent={'center'} xs={12}>
         <Menu setIndex={setIndex} index={index} width={'100%'} />
       </Grid>
-      <Grid item container justifyContent={'center'} xs={10} md={6} paddingTop={'8rem'}>
+      <Grid item container justifyContent={'center'} xs={12} >
+        <Stats/>
+      </Grid>
+      <Grid item container justifyContent={'center'} xs={12}  paddingTop={'2rem'}>
         <Router index={index} />
       </Grid>
     </>

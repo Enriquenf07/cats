@@ -8,11 +8,13 @@ export default function InitialConfig() {
     const {name, setName, setGameState, gameState} = useStore()
 
     const handleNameInput = (e) => {
-        setName(e.target.value)
+        const value = e.target.value
+        setName(value.toUpperCase())
     }
 
     const handleSubmit = () => {
         setGameState('settingName', false)
+        toast.info('YOU ARE A CAT NOW! HAVE FUN!! 😸')
     }
 
     return (
